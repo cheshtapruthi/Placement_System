@@ -17,16 +17,7 @@ A modern, full-stack Placement Management System built with **Next.js**, **Expre
 - List of hiring companies
 - View eligible students
 - Track applicants per company
-
-### 📅 Interview Scheduler
-- Schedule interview slots
-- Notify students via dashboard/email
-- Track upcoming interviews
-
-### 📊 Admin Dashboard
-- Total students, placed, and companies stats
-- Placement visualizations using Recharts
-- Dynamic dashboards and analytics
+  
 
 ---
 
@@ -38,7 +29,6 @@ A modern, full-stack Placement Management System built with **Next.js**, **Expre
 | Backend | Node.js + Express.js |
 | Database | PostgreSQL |
 | ORM | Prisma |
-| Deployment | GitHub + Railway/Render/Heroku (optional) |
 
 ---
 
