@@ -1,0 +1,66 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Student {
+  id             Int           @id @default(autoincrement())
+  name           String
+  email          String        @unique
+  password       String
+  address        String
+  qualifications String
+  branch         String
+  skills         String?
+  resumeUrl      String?
+
+  applications   Application[]
+  offers         Offer[]
+
+  @@map("Student")
+}
+
+model Company {
+  id          Int      @id @default(autoincrement())
+  name        String
+  logo        String
+  location    String
+  openings    Int
+  deadline    String
+  roles       String[]  // Array of roles
+  package     String
+  type        String
+  status      String
+  applications Application[]
+
+  @@map("Company")
+}
+
+model Application {
+  id         Int      @id @default(autoincrement())
+  student    Student  @relation(fields: [studentId], references: [id])
+  studentId  Int
+  company    Company  @relation(fields: [companyId], references: [id])
+  companyId  Int
+  status     String   @default("pending")
+  createdAt DateTime @default(now())
+
+  @@unique([studentId, companyId]) 
+}
+
+model Offer {
+  id          Int      @id @default(autoincrement())
+  company     String
+  position    String
+  package     String
+  location    String
+  joiningDate String
+  status      String
+
+  student     Student  @relation(fields: [studentId], references: [id]) 
+  studentId   Int
+}
