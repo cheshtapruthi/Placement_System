@@ -26,11 +26,12 @@ export default function StudentsCorner() {
   const { email } = useUser();
   const [student, setStudent] = useState<any>(null);
   const [loading, setLoading] = useState(true);
+  const apiUrl = process.env.VITE_API_URL;
 
   useEffect(() => {
     const fetchStudentData = async () => {
       try {
-        const res = await fetch(`http://localhost:5000/api/students/${email}`);
+        const res = await fetch(`https://placement-sys.onrender.com/api/students/${email}`);
         const data = await res.json();
         setStudent(data);
       } catch (err) {

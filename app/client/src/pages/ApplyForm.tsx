@@ -8,7 +8,8 @@ import { useLocation } from "react-router-dom";
 
 const FileUploadBox = ({ onFileSelect }: { onFileSelect: (file: File) => void }) => {
   const [uploadedFile, setUploadedFile] = useState<File | null>(null);
-
+  
+  const apiUrl = process.env.VITE_API_URL;
   const onDrop = useCallback((acceptedFiles: File[]) => {
     if (acceptedFiles.length > 0) {
       const file = acceptedFiles[0];
@@ -91,7 +92,7 @@ const ApplyForm = () => {
   
     try {
       // Step 1: Upload resume & update student (if exists) OR create
-      const studentResponse = await fetch("http://localhost:5000/api/students/update-or-create", {
+      const studentResponse = await fetch("https://placement-sys.onrender.com/api/students/update-or-create", {
         method: "POST",
         body: form,
       });
@@ -106,7 +107,7 @@ const ApplyForm = () => {
 
   
       // Step 2: Create Application entry
-      const appResponse = await fetch("http://localhost:5000/api/applications", {
+      const appResponse = await fetch("https://placement-sys.onrender.com/api/applications", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

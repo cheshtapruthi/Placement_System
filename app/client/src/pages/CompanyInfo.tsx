@@ -18,13 +18,15 @@ import {
   ExternalLink,
 } from "lucide-react";
 
+
 const Companies = () => {
   const navigate = useNavigate();
 
   const [companies, setCompanies] = useState([]);
+  const apiUrl = process.env.VITE_API_URL;
 
   useEffect(() => {
-    axios.get("http://localhost:5000/api/companies")
+    axios.get(`${apiUrl}/api/companies`)
       .then((res) => setCompanies(res.data))
       .catch((err) => console.error("Failed to fetch companies:", err));
   }, []);
