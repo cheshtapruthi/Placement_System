@@ -31,7 +31,7 @@ export default function StudentsCorner() {
   useEffect(() => {
     const fetchStudentData = async () => {
       try {
-        const res = await fetch(`https://placement-sys.onrender.com/api/students/${email}`);
+        const res = await fetch(`${apiUrl}/api/students/${email}`);
         const data = await res.json();
         setStudent(data);
       } catch (err) {

@@ -30,8 +30,9 @@ const RegisterForm = () => {
     e.preventDefault();
     setLoading(true);
 
+    const apiUrl = process.env.VITE_API_URL;
     try {
-      const response = await fetch('https://placement-sys.onrender.com/api/auth/register', {
+      const response = await fetch(`${apiUrl}/api/auth/register`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
@@ -52,7 +53,6 @@ const RegisterForm = () => {
       setLoading(false);
     }
   };
-  const apiUrl = process.env.VITE_API_URL;
 
   return (
     <div className="min-h-screen flex justify-center items-center bg-gray-50">
