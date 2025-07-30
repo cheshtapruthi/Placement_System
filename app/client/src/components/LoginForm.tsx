@@ -41,7 +41,7 @@ const LoginForm = () => {
         navigate("/home");
       }
     } catch (err) {
-      alert("❌ Network error. Please try again.");
+      alert(err);
       console.error(err);
     } finally {
       setIsLoading(false);
